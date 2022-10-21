@@ -23,7 +23,7 @@ class TokenApi(APIView):
             account = Account.objects.get(username=accountRequestToken['username'], password=accountRequestToken['password'])
         except:
             return Response({"message": "User này không tồn tại"}, status=status.HTTP_404_NOT_FOUND)
-        payLoad={"sd":"ads"}
+        payLoad = {'UserID': account.pk, "UserName": account.username, "exp": exp}
         jwtData = jwt.encode(payLoad, SECRET_KEY,)
         jwtUser = {"access": jwtData}
         return Response(jwtUser, status=status.HTTP_200_OK)

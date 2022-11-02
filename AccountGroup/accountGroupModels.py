@@ -1,0 +1,8 @@
+from django.db import models
+from Account.accountModels import Account
+from Group.groupModels import Group
+
+# Create your models here.
+class AccountGroup(models.Model):
+    account = models.ForeignKey(Account,on_delete=models.CASCADE)
+    group = models.ForeignKey(Group,on_delete=models.CASCADE)

@@ -6,3 +6,6 @@ from Group.groupModels import Group
 class AccountGroup(models.Model):
     account = models.ForeignKey(Account,on_delete=models.CASCADE)
     group = models.ForeignKey(Group,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.account.username +"-"+self.group.groupName

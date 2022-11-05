@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'Teacher',
     'Student',
     'Subject',
+    'Major',
+    'SubjectMajor',
     'sectionClass',
     'DayOff',
     'sectionClass_Student',
@@ -53,10 +55,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'SubjectSign.middleware.AuthorizationMiddleware'
 ]
 
 ROOT_URLCONF = 'SubjectSign.urls'

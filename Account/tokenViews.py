@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from SubjectSign.roleRequestDecorate import RoleRequest
 from SubjectSign.settings import SECRET_KEY
 import jwt
+from Student.studentModels import Student
 from .accountModels import Account
 from datetime import datetime, timedelta, timezone
 from rest_framework.decorators import APIView
@@ -29,6 +30,10 @@ class TokenApi(APIView):
         groupUsers=AccountGroup.objects.filter(account=account)
         for gruopUser in groupUsers:
             groups.append(gruopUser.group.groupName)
+        try:
+            student = Student.objects.filter(account =account)[0]
+        except:
+            student = 0
         payLoad = {'AccountID':account.pk,"username":account.username,"Group":groups,"exp":exp}
         jwtData = jwt.encode(payLoad,SECRET_KEY,) 
         jwtUser={"access":jwtData}

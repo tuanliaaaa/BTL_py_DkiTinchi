@@ -8,4 +8,9 @@ class sectionClass(models.Model):
     teacherID = models.ForeignKey(Teacher,on_delete=models.CASCADE)
     dayStart = models.DateField()
     quanlity = models.IntegerField()
+    quanlityReal = models.IntegerField(null=True)
+    dayDefault = models.CharField(max_length=255,null=True)
+    dayAdd = models.IntegerField(null=True)
+    dayLessonList = models.IntegerField(null=True)
+    dayEnd = models.DateField(null=True)
     

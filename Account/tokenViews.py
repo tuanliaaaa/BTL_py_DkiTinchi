@@ -11,10 +11,11 @@ from rest_framework.decorators import APIView
 from django.views.decorators.csrf import csrf_exempt
 from AccountGroup.accountGroupModels import AccountGroup
 from Group.groupModels import Group
+from Student.studentSerializer import StudentSerializer
 from django.utils.decorators import method_decorator
 class TokenApi(APIView):    
     @csrf_exempt
-    # @method_decorator(RoleRequest(allowedRoles=['admin',]))
+    #@method_decorator(RoleRequest(allowedRoles=['NomalUser',]))
     def post(self,request):
         exp=datetime.now(tz=timezone.utc) + timedelta(minutes=50)
         accountRequestToken =request.data     
@@ -31,10 +32,14 @@ class TokenApi(APIView):
         for gruopUser in groupUsers:
             groups.append(gruopUser.group.groupName)
         try:
-            student = Student.objects.filter(account =account)[0]
+            students = Student.objects.filter(account=account)[0]
+            student = {"id": students.pk,"studentCode": students.studentCode,"email": students.email,"account":students.account.pk,"fullName":students.fullName}
         except:
-            student = 0
-        payLoad = {'AccountID':account.pk,"username":account.username,"Group":groups,"exp":exp}
+            student = ""
+        payLoad = {'AccountID':account.pk,"username":account.username,"Group":groups,"exp":exp,"student":student}
         jwtData = jwt.encode(payLoad,SECRET_KEY,) 
+        
+        payLoad=jwt.decode(jwtData, SECRET_KEY, algorithms=["HS256"])
+        print(payLoad)
         jwtUser={"access":jwtData}
         return Response(jwtUser,status=status.HTTP_200_OK)

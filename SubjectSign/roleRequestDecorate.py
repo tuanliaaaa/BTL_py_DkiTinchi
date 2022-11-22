@@ -8,7 +8,19 @@ def RoleRequest(allowedRoles=[]):
         def wrap(request,*args,**kwargs):
             checkAuthorization = False
             for allowedRole in allowedRoles:
-                if allowedRole in request.groupNames:
+                if allowedRole in request.Group:
+                    checkAuthorization = True
+                    return ViewFuntion(request,*args,**kwargs)
+            if not checkAuthorization:
+                return Response({"message":"bạn không có quyền truy cập"},status=status.HTTP_403_FORBIDDEN)
+        return wrap
+    return decorator
+def PotisionRequest(allowedPtision=[]):
+    def decorator(ViewFuntion):
+        def wrap(request,*args,**kwargs):
+            checkAuthorization = False
+            for allowedRole in allowedPtision:
+                if allowedRole in request.Group:
                     checkAuthorization = True
                     return ViewFuntion(request,*args,**kwargs)
             if not checkAuthorization:

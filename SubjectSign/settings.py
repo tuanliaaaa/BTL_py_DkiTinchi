@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5ik1mv%u6z7f(efj5*2e42jmv-wka=lg=jf1xu46j*jgnd++y3'
+SECRET_KEY = 'tuan'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'sectionClass',
     'DayOff',
     'sectionClass_Student',
+    'TermSubjectStudent',
+    'TermMajorSubject',
+    'Term',
+    'CreditRegistration',
     'rest_framework',
 ]
 

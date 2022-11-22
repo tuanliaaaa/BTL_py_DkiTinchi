@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.clear::after {  
+    content: "";  clear: both;  display: table;
+
+}
+#header{
+    height: 120px;
+    background-image:url("https://tme.uconn.edu/wp-content/uploads/sites/1326/2016/12/cse.jpg")
+}
+
+#header .header__logo{
+    float:left;
+    width: 20%;
+}
+.header__logo img{
+    margin-top: 10px;
+}
+#header .header__title{
+    float:right;
+    width: 80%;
+    text-align: center;
+}
+.header__title h1{
+    font-size:30px;
+    color:yellow;
+    margin: 10px 0 20px 0;
+}
+.header__title p{
+    color:red;
+    font-size:20px;
+}
+#container{
+    background-image: url("https://xdcs.cdnchinhphu.vn/thumb_w/650/446259493575335936/2022/9/17/1223-9087-1663375260199235363522-0-33-461-771-crop-1663375270456950765426.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+#container .container__login{
+    float: right;
+    margin-top: 80px;
+    margin-right: 200px;
+}
+.container__login #login{
+    text-align: center;
+}
+#login .login__title{
+    margin-bottom: 20px;
+}
+.login__title h1{
+    color: antiquewhite;
+    text-align: justify;
+    margin: auto;
+    width: 112px;
+}
+#login .login__content{
+    
+}
+.login__content .login__content__input{
+
+}
+.login__content__input input{
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.login__content__input img{
+    position: relative;
+    width: 35px;
+    left: -50px;
+    top:13px
+}
+#login #login__text__error{
+    
+}
+#login__text__error #error{
+    color: antiquewhite;
+    font-size: 20px;
+}
+#login .login__button{
+    text-align: left;
+    margin-top: 20px;
+}
+.login__button input{
+    background-color: rgb(147, 49, 79);
+    cursor: pointer;
+    min-width: 200px    ;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+}
+.login__button input:hover{
+    opacity: 0.7;
+}

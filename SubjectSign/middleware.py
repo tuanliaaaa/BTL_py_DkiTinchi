@@ -1,4 +1,4 @@
-from  .settings import SECRET_KEY
+from SubjectSign.settings import SECRET_KEY
 from Student.studentModels import Student
 from Account.accountModels import Account
 import jwt
@@ -15,15 +15,9 @@ class AuthorizationMiddleware:
             jwtTokenPayload = jwtTokenSplit[1]
             try:
                 payLoad=jwt.decode(jwtTokenPayload, SECRET_KEY, algorithms=["HS256"])
-                print(payLoad)
-                request.groupNames=payLoad['Group']
                 request.AccountID=payLoad['AccountID']
-                try:
-                    account = Account.objects.get(pk=payLoad['AccountID'])
-                    student = Student.objects.filter(account =account)[0]
-                    request.Student=student
-                except:
-                    pass
+                request.Student =payLoad['student']
+                request.Group=payLoad['Group']
             except:
                 return HttpResponse('{"message":"Token đã hết hạn"}',status =status.HTTP_403_FORBIDDEN)
         response = self.get_response(request)

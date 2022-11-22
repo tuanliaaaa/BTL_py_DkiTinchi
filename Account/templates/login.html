@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png">
+    <title>PTIT</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__logo">
+            <img  src="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png" alt="loading"/>
+        </div>
+        <div class="header__title">
+            <h1><b>Học Viện Công Nghệ Bưu Chính Viễn Thông</b></h1>
+            <p><b>Posts and Telecommunications Institute of Technology</b></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="container">
+        <div class="container__login">
+            <form action="" id="login">
+                <div class="login__title">
+                    <h1>Login</h1>
+                </div>
+                <div class="login__content">
+                    <div class="login__content__input">
+                        <input  type="text" placeholder="username" id="Username" onkeyup="loginByEnter()"> <img  src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" ></input>
+                    </div>
+                    <div class="login__content__input">
+                        <input type="password" placeholder="password" id="Password" onkeyup="loginByEnter()"> <img  src="https://cdn-icons-png.flaticon.com/512/93/93141.png"></input>
+                    </div>
+                </div>
+                <div id="login__text__error">
+                    <p id="error"></p>
+                </div>
+                <div class="login__button">
+                    <input type="button" value="Log in" onclick=" login()">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../static/js/login.js"></script>
+</body>
+</html>

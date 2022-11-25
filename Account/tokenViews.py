@@ -10,6 +10,7 @@ from datetime import datetime, timedelta, timezone
 from rest_framework.decorators import APIView
 from django.views.decorators.csrf import csrf_exempt
 from AccountGroup.accountGroupModels import AccountGroup
+from Teacher.teacherModels import Teacher
 from Group.groupModels import Group
 from Student.studentSerializer import StudentSerializer
 from django.utils.decorators import method_decorator
@@ -31,12 +32,11 @@ class TokenApi(APIView):
         groupUsers=AccountGroup.objects.filter(account=account)
         for gruopUser in groupUsers:
             groups.append(gruopUser.group.groupName)
-        try:
-            students = Student.objects.filter(account=account)[0]
-            student = {"id": students.pk,"studentCode": students.studentCode,"email": students.email,"account":students.account.pk,"fullName":students.fullName}
-        except:
-            student = ""
-        payLoad = {'AccountID':account.pk,"username":account.username,"Group":groups,"exp":exp,"student":student}
+        if Student.objects.filter(account=account):
+            position="Student"
+        if Teacher.objects.filter(account=account):
+            position="Teacher"
+        payLoad = {'AccountID':account.pk,"username":account.username,"Group":groups,"exp":exp,"Position":position}
         jwtData = jwt.encode(payLoad,SECRET_KEY,) 
         
         payLoad=jwt.decode(jwtData, SECRET_KEY, algorithms=["HS256"])

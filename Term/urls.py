@@ -1,6 +1,6 @@
 
 from django.urls import path
-from Term.termViews import GetTermByNow
+from Term.termViews import GetSignSubjectByNow
 urlpatterns = [
-    path('api/GetTermByNow',GetTermByNow.as_view()),
+    path('api/GetSignSubjectByNow',GetSignSubjectByNow.as_view()),
 ]

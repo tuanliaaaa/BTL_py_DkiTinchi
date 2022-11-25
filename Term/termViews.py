@@ -9,12 +9,18 @@ from Term.termSerializer import TermSerializer
 from datetime import datetime,timedelta,timezone
 from rest_framework.decorators import APIView
 from django.utils.decorators import method_decorator
-from SubjectSign.roleRequestDecorate import RoleRequest
+from SubjectSign.roleRequestDecorate import RoleRequest, PotisionRequest
 from rest_framework.parsers import JSONParser
 from datetime import datetime
-class GetTermByNow(APIView):
-   # @method_decorator(RoleRequest(allowedRoles=['Admin',]))
+class GetSignSubjectByNow(APIView):
+    # @method_decorator(PotisionRequest(allowedPositions=['Student',]))
     def get(self,request):
-        terms = Term.objects.filter(StartTimeSignTerm__lte=datetime.now(),EndTimeSignTerm__gte=datetime.now())| Term.objects.filter(StartTimeSignSubject__lte=datetime.now(),EndTimeSignSubject__gte=datetime.now())
+        terms = Term.objects.filter(StartTimeSignTerm__lte=datetime.now(),EndTimeSignTerm__gte=datetime.now())
+        termSerializer = TermSerializer(terms,many=True)
+        return Response(termSerializer.data,status=status.HTTP_200_OK)
+class GetSignCreditByNow(APIView):
+    # @method_decorator(PotisionRequest(allowedPositions=['Student',]))
+    def get(self,request):
+        terms = Term.objects.filter(StartTimeSignSubject__lte=datetime.now(),EndTimeSignSubject__gte=datetime.now())
         termSerializer = TermSerializer(terms,many=True)
         return Response(termSerializer.data,status=status.HTTP_200_OK)

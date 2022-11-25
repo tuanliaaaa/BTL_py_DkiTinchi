@@ -16,7 +16,7 @@ class AuthorizationMiddleware:
             try:
                 payLoad=jwt.decode(jwtTokenPayload, SECRET_KEY, algorithms=["HS256"])
                 request.AccountID=payLoad['AccountID']
-                request.Student =payLoad['student']
+                request.Position=payLoad['Position']
                 request.Group=payLoad['Group']
             except:
                 return HttpResponse('{"message":"Token đã hết hạn"}',status =status.HTTP_403_FORBIDDEN)

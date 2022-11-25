@@ -2,7 +2,7 @@ from tkinter import CASCADE
 from django.db import models
 from Teacher.teacherModels import Teacher
 from SubjectMajor.subjectMajormodels import SubjectMajor
-from TermMajorSubject.termMajorSubjectModels import TermMajorSubject
+from Term.termModels import Term
 from datetime import date,timedelta
 # Create your models here.
 class sectionClass(models.Model):
@@ -15,7 +15,7 @@ class sectionClass(models.Model):
     dayAdd = models.CharField(max_length=100000,null=True)
     dayLessonList = models.CharField(max_length=100000,null=True,blank=True)
     dayEnd = models.DateField(null=True)
-    termMajorSubject = models.ForeignKey(TermMajorSubject,on_delete=models.CASCADE,blank=True,null=True)
+    term = models.ForeignKey(Term,on_delete=models.CASCADE,null=True)
 
     def save(self, *args, **kwargs):
         # try:

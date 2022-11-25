@@ -15,7 +15,7 @@ class SectionClassSerializer(serializers.Serializer):
     dayAdd = serializers.CharField()
     dayLessonList = serializers.CharField()
     dayEnd = serializers.DateField()
-    termMajorSubject =serializers.CharField(max_length=255)
+    term =serializers.CharField(max_length=255)
     def to_internal_value(self, data):
         if 'subjectMajor' in data:
             data['subjectMajor']=SubjectMajor.objects.get(pk=data['subjectMajor'])

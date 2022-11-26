@@ -23,5 +23,5 @@ urlpatterns = [
     path('CreditRegistration/',include('CreditRegistration.urls')),
     path('Subject/',include('Subject.urls')),
     path('TermSubjectStudent/',include('TermSubjectStudent.urls')),
-    # path('SectionClass/',include('sectionClass.urls')),
+    path('SectionClass/',include('sectionClass.urls')),
 ]

@@ -1,6 +1,7 @@
 
 from django.urls import path
-from .CreditRegistrationViews import CreditRegistration
+from .CreditRegistrationViews import SubjecttRegistration,CreditRegistration
 urlpatterns = [
-    path('',CreditRegistration.as_view()),
+    path('subject',SubjecttRegistration.as_view()),
+    path('credit',CreditRegistration.as_view()),
 ]

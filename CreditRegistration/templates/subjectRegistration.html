@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png">
     <title>PTIT</title>
-    <link rel="stylesheet" href="../static/css/creditRegistration.css">
+    <link rel="stylesheet" href="../static/css/subjectRegistration.css">
 </head>
 <body>
     <div id="header">
@@ -35,12 +35,19 @@
         </div>
     </div>
     <div id="container">
-
+        <div class="container__fiterbysubject">
+          <form action="" id="fiterbysubject">
+            <label for="subjecttext">Lọc theo môn học: </label>
+            <input type="text" id="subjecttext" >
+            <input type="button" value="Lọc >>" onclick="GetSubjectBySubjectCodeInput()">
+          </form>
+        </div>
         <div class="container__fiterbycondition">
           <label for="">Lọc Theo Điều Kiện: </label>
           <div id="fiterbycondition">
             <select name="slmonhoc" multiple="multiple" id="selecSubject" onchange="GetMonHoc_changed()">
-              
+              <option value="BAS1153">BAS1153 - Lịch sử Đảng cộng sản Việt Nam (2TC)</option>
+              <option value="BAS1160">BAS1160 - Tiếng Anh (Course 3 Plus) (2TC)</option>
             </select>
           </div>
           <div class="clear"></div>
@@ -62,30 +69,7 @@
             </tbody>
           </table>
         </div>
-        <div class="container__view__sign">
-            <label for="table__CheckSubjectlist">Xem Đăng Kí</label>
-            <table id="table__CheckSubjectlist">
-              <thead>
-                  <tr>
-                      <th>STT</th>
-                      <th>Mã Môn Học</th>
-                      <th>Tên Môn Học</th>      
-                      <th>Trạng thái</th>     
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td id="">BAS1153</td>
-                    <td id="">Lịch sử đảng</td>
-                    <td id="checkbox">
-                      <input type="checkbox">
-                    </td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
     </div>
-    <script src="../static/js/creditRegistrations.js"></script>
+    <script src="../static/js/subjectRegistration.js"></script>
 </body>
 </html>

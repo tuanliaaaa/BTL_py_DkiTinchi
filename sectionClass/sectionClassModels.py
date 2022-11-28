@@ -3,7 +3,7 @@ from django.db import models
 from Teacher.teacherModels import Teacher
 from SubjectMajor.subjectMajormodels import SubjectMajor
 from Term.termModels import Term
-from datetime import date,timedelta
+from datetime import date,timedelta,datetime
 # Create your models here.
 class sectionClass(models.Model):
     subjectMajor = models.ForeignKey(SubjectMajor,on_delete=models.CASCADE)
@@ -18,19 +18,26 @@ class sectionClass(models.Model):
     term = models.ForeignKey(Term,on_delete=models.CASCADE,null=True)
 
     def save(self, *args, **kwargs):
-        # try:
-        #     dayStart= self.dayStart
-        #     dem=0
-        #     numberOfCredits = self.subjectMajor.numberOfCredits
-        #     check=dem*7
-        #     self.dayLessonList=""
-        #     print(dayStart.weekday()+1)
-        #     if(dayStart.weekday()+1==int(self.dayDefault[0])):
-        #         print('vclS')
-        #     while(dem!=check):
-        #         self.dayLessonList = '1'
-        # except:
-        #     pass
+        if self.dayDefault:
+            dayLessonList=[]
+            daysDefaultList=self.dayDefault.split(",")
+            for dayDefault in daysDefaultList:
+                d=int(dayDefault[0])-2
+                day=d-self.dayStart.weekday()
+                if day<0:
+                    day+=6
+                startx=self.dayStart+timedelta(days=day)
+                begin=0
+                while(True):
+                    begin =dayDefault[8:-1].find("1", begin,len(dayDefault[8:-1]))
+                    if(begin==-1):
+                        break
+                    else:
+                        dayLessonList.append((startx+timedelta(days=begin*7)).strftime("%Y/%m/%d")+"("+dayDefault[:dayDefault.find("(")]+")")
+                        begin+=1
+            dayLessonList.sort(key=lambda x:datetime.strptime(x[:10], "%Y/%m/%d"))
+            self.dayLessonList=" ".join(dayLessonList)
+            self.dayEnd=datetime.strptime(dayLessonList[-1][:10], "%Y/%m/%d")
         super().save(*args, **kwargs)
 
     

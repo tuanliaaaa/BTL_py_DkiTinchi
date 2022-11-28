@@ -117,14 +117,18 @@ body{
     font-size: 20px;
 }
 #container .container__listSubject{
+    margin-top: 20px;
     margin-bottom: 40px;
+    max-height: 400px;
+    overflow-y:scroll
 }
 .container__listSubject #table__Subjectlist{
     width: 80%;
     text-align: center;
     margin: auto;
-    margin-top: 20px;
+    
     border-collapse: collapse;
+
 }
 #table__Subjectlist thead tr th{
     padding: 10px;
@@ -152,6 +156,7 @@ td input[type=checkbox]{
     margin: auto;
     margin-top: 20px;
     border-collapse: collapse;
+    margin-bottom: 40px;
 }
 #table__CheckSubjectlist thead tr th{
     padding: 10px;

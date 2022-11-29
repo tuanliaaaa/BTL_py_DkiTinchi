@@ -43,14 +43,14 @@
                 <div class="container__body__title__sheduleselect">
                     <div class="title__sheduleselect__selectterm">
                         <label for="selectterm">Chọn Kì Học: </label>
-                        <select id="selectterm">
+                        <select id="selectterm" onchange="GetMonHoc_changed()">
                             <option value="volvo">Volvo</option>
                             <option value="saab">Saab</option>
                             <option value="vw">VW</option>
                             <option value="audi" selected>Audi</option>
                         </select>
                     </div>
-                    <div class="title__sheduleselect__selectteschoolweek">
+                    <div class="title__sheduleselect__selectteschoolweek" onchange="Getschedule_changed()">
                         <label for="schoolweek">Chọn Tuần Học: </label>
                         <select id="schoolweek">
                             <option value="volvo">Volvo</option>
@@ -84,14 +84,10 @@
                                 <td>Tiết 1</td>
                                 <td></td>
                                 <td></td>
-                                <td class="subjectlesson" rowspan="2">
-                                    <p>Mạng máy tính</p>
-                                </td>
                                 <td></td>
                                 <td></td>
-                                <td class="subjectlesson" rowspan="2">
-                                    <p>Hệ Điều Hành</p>
-                                </td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td>Tiết 1</td>
                             </tr>
@@ -101,9 +97,9 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                               
                                 <td></td>
-
+                                <td></td>
+                                <td></td>
                                 <td>Tiết 2</td>
                             </tr>
                             <tr>
@@ -236,5 +232,6 @@
             </div>
         </div>
     </div>
+<script src="../static/js/shedule.js"></script>
 </body>
 </html>

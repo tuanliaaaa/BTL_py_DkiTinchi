@@ -152,5 +152,9 @@ class TermStudentSign(APIView):
         termsListID =[ Term.objects.get(pk=termStudentSign["term"]) for termStudentSign in termStudentSigns]
         termSerializer=TermSerializer(termsListID,many=True)
         return Response(termSerializer.data,status=status.HTTP_200_OK)
-
+class TimeByTermID(APIView):
+    def get(self,request,id):
+        term = Term.objects.get(pk=id)
+        termSerializer=TermSerializer(term)
+        return Response(termSerializer.data,status=status.HTTP_200_OK)
         

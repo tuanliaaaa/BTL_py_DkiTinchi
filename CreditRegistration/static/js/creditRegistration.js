@@ -1,4 +1,4 @@
-const listcredit=[];
+var listcredit=[];
 var subjectselect=0;
 if (localStorage.getItem("Token") )
 {
@@ -174,7 +174,6 @@ function GetSectionClassStudentNow(){
         else if(xhttp.status==404)
         {
             document.getElementById("erornotfound").style.display = "block";
-            // GetTermSubjectStudentNear();
         }
         var subjectsJsons=xhttp.responseText;
         var subjects= JSON.parse(subjectsJsons);
@@ -292,10 +291,10 @@ function DeleteCredit(credit){
             listcredit.pop(credit.value);
 
             
+            GetSectionClassStudentNow();  
             if(subjectselect!=0)
             {
-                GetSectionClassStudentNow();
-                
+                GetCreditByID(subjectselect);
             }
 
         }

@@ -7,7 +7,8 @@ class Term(models.Model):
     EndTimeSignTerm = models.DateTimeField()
     StartTimeSignSubject = models.DateTimeField()
     EndTimeSignSubject = models.DateTimeField()
-
+    dayStart = models.DateField(null=True)
+    dayEnd = models.DateField(null=True)
     def save(self, *args, **kwargs):
         if (self.EndTimeSignTerm>self.StartTimeSignTerm 
             and self.StartTimeSignSubject>self.EndTimeSignTerm

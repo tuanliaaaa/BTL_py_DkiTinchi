@@ -59,18 +59,17 @@ class SectionClassStudentNow(APIView):
         lessonList=[]
         lessonListRequests=[]
         for lesson in lessons:
-            a=lesson.split(" ")
-            for i in a:
-                b=i[:-2]
-                for z in range(1,int(i[-2])+1):
-                    lessonList.append(b+str(z)+")")
+                    a=lesson.split(" ")
+                    for i in a:
+                        for z in range(0,int(i[-2])):
+                            lessonList.append(i[:int(i.find("T"))+1]+str(z+int(i[i.find("T")+1:i.find("S")]))+")")
+
         lessons=lessonListRequest.split(" ")
         for lesson in lessons:
             a=lesson.split(" ")
             for i in a:
-                b=i[:-2]
-                for z in range(1,int(i[-2])+1):
-                    lessonListRequests.append(b+str(z)+")")
+                for z in range(0,int(i[-2])):
+                    lessonListRequests.append(i[:int(i.find("T"))+1]+str(z+int(i[i.find("T")+1:i.find("S")]))+")")
         for i in lessonListRequests:
             if i in lessonList:
                 return Response({"message":"Trùng Lịch học"},status=status.HTTP_404_NOT_FOUND)
@@ -104,3 +103,33 @@ class SectionClassStudentByID(APIView):
         sectionClassStudentDelete =sectionClassStudent.objects.get(studentID=student,sectionClassID=sectionClasss)
         sectionClassStudentDelete.delete()
         return Response({"mesage":"đã xóa thành công"},status=status.HTTP_204_NO_CONTENT)
+class GetScheduleByTime(APIView):
+    def get_term_by_id(self,pk):
+        try:
+            return Term.objects.get(pk=pk)
+        except Term.DoesNotExist:
+            raise Http404
+    def get_student_by_account(self, account__pk):
+        try:
+            return Student.objects.get(account__pk=account__pk)
+        except Student.DoesNotExist:
+            raise Http404
+
+    def post(self,request,id):
+        def oke(x):
+            return (int(x[0]),int(x[x.find("T")+1:]))
+        student = self.get_student_by_account(request.AccountID)
+        dayStart,dayEnd=datetime.strptime(request.data["dayStart"],"%Y/%m/%d"),datetime.strptime(request.data["dayEnd"],"%Y/%m/%d")
+        term =self.get_term_by_id(id)
+        sectionClassStudents=sectionClassStudent.objects.filter(studentID=student,sectionClassID__term=term)
+        lessons =[ {"dayLessonList":sectionsClassStudent.sectionClassID.dayLessonList,"subject":sectionsClassStudent.sectionClassID.subjectMajor.subject.SubjectName} for sectionsClassStudent in sectionClassStudents]
+        lessonList=[]
+        for lesson in lessons:
+            a=lesson["dayLessonList"].split(" ")
+            for i in a:
+                for z in range(0,int(i[-2])):
+                    check=datetime.strptime(i[:i.find("(")],"%Y/%m/%d")
+                    if(check>=dayStart and check<=dayEnd):
+                        lessonList.append({"dayLesson":i[int(i.find("("))+1:int(i.find("T"))+1]+str(z+int(i[i.find("T")+1:i.find("S")])),"Subject":lesson["subject"]})
+        lessonList.sort(key=lambda x:(int(x["dayLesson"][0]),int(x["dayLesson"][x["dayLesson"].find("T")+1:])))
+        return Response(lessonList,status=status.HTTP_200_OK)

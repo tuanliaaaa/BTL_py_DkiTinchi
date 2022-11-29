@@ -10,7 +10,8 @@ class TermSerializer(serializers.Serializer):
     EndTimeSignTerm = serializers.DateTimeField()
     StartTimeSignSubject = serializers.DateTimeField()
     EndTimeSignSubject = serializers.DateTimeField()
-   
+    dayStart = serializers.DateField()
+    dayEnd = serializers.DateField()
     def create(self, validated_data):
         return Term.objects.create(**validated_data)
     def update(self, instance, validated_data):

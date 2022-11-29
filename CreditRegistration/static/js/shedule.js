@@ -1,6 +1,5 @@
 if (localStorage.getItem("Token") )
 {
-   
     GetTermUserSign();
 }
 else

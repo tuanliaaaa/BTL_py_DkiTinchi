@@ -1,4 +1,5 @@
 from types import prepare_class
+from django.db.models import Count
 from django.http import HttpResponse, JsonResponse
 from rest_framework import status
 from rest_framework.response import Response
@@ -7,6 +8,7 @@ from Term.termModels import Term
 from TermSubjectStudent.termSubjectStudentModels import TermSubjectStudent
 from Subject.subjectModels import Subject
 from Subject.subjectSerializer import SubjectSerializer
+from Term.termSerializer import TermSerializer
 from datetime import datetime
 from rest_framework.decorators import APIView
 from SubjectSign.roleRequestDecorate import RoleRequest,PotisionRequest
@@ -14,6 +16,7 @@ from rest_framework.decorators import api_view
 from django.utils.decorators import method_decorator
 from json import loads
 import json
+from sectionClass.sectionClassModels import sectionClass
 from Major.majorModels import Major
 from SubjectMajor.subjectMajormodels import SubjectMajor
 from django.views.decorators.csrf import csrf_exempt
@@ -137,3 +140,17 @@ class SubjectByTermNow(APIView):
             subject['MajorSubjectID'] =termSubjectStudent.subjectMajor.pk
             subjects.append(subject)    
         return Response(subjects,status=status.HTTP_200_OK)
+class TermStudentSign(APIView):
+    def get_student_by_account(self, account__pk):
+        try:
+            return Student.objects.get(account__pk=account__pk)
+        except Student.DoesNotExist:
+            raise Http404
+    def get(self,request):
+        student = self.get_student_by_account(request.AccountID)
+        termStudentSigns =TermSubjectStudent.objects.values("term").filter(student=student).annotate(Count('id'))
+        termsListID =[ Term.objects.get(pk=termStudentSign["term"]) for termStudentSign in termStudentSigns]
+        termSerializer=TermSerializer(termsListID,many=True)
+        return Response(termSerializer.data,status=status.HTTP_200_OK)
+
+        

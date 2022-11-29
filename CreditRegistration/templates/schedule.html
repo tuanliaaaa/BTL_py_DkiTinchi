@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png">
+    <title>PTIT</title>
+    <link rel="stylesheet" href="../static/css/schedule.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__top">
+          <div class="header__logo">
+              <img  src="https://portal.ptit.edu.vn/wp-content/uploads/2016/04/ptit-logo.png" alt="loading"/>
+          </div>
+          <div class="header__title">
+              <h1><b>Học Viện Công Nghệ Bưu Chính Viễn Thông</b></h1>
+              <p><b>Posts and Telecommunications Institute of Technology</b></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="header__navbar">
+          <div class="header__navbar__listoption">
+            <ul>
+              <a href="/CreditRegistration/subject"><li>Đăng kí môn học</li></a>
+              <a href="/CreditRegistration/credit"><li>Đăng kí tín chỉ</li></a>
+              <a href="/CreditRegistration/schedule"><li>Xem Thời Khóa Biểu</li></a>
+            </ul>
+          </div>
+          <div class="header__navbar__logout">
+            <a href="">Log Out</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+    </div>
+    <div id="container">
+        <div class="container__body">
+            <div class="container__body__title">
+                <div class="container__body__title__img">
+                    <img src="https://qldt.ptit.edu.vn/App_Themes/Standard/Images/icon_lich.png" alt="">
+                </div>
+                <div class="container__body__title__sheduleselect">
+                    <div class="title__sheduleselect__selectterm">
+                        <label for="selectterm">Chọn Kì Học: </label>
+                        <select id="selectterm">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="vw">VW</option>
+                            <option value="audi" selected>Audi</option>
+                        </select>
+                    </div>
+                    <div class="title__sheduleselect__selectteschoolweek">
+                        <label for="schoolweek">Chọn Tuần Học: </label>
+                        <select id="schoolweek">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="vw">VW</option>
+                            <option value="audi" selected>Audi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="container__body__content">
+                <div class="container__body__scheduletable">
+                    <table id="scheduletable">
+                        <thead>
+                            <tr>
+                                <th>...</th>
+                                <th>Thứ 2</th>
+                                <th>Thứ 3</th>
+                                <th>Thứ 4</th>
+                                <th>Thứ 5</th>
+                                <th>Thứ 6</th>
+                                <th>Thứ 7</th>
+                                <th>Chủ Nhật</th>
+                                <th>...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tiết 1</td>
+                                <td></td>
+                                <td></td>
+                                <td class="subjectlesson" rowspan="2">
+                                    <p>Mạng máy tính</p>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class="subjectlesson" rowspan="2">
+                                    <p>Hệ Điều Hành</p>
+                                </td>
+                                <td></td>
+                                <td>Tiết 1</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                               
+                                <td></td>
+
+                                <td>Tiết 2</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 3</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 4</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 4</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 5</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 5</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 6</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 6</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 7</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 7</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 8</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 8</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 9</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 9</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 10</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 10</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 11</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 11</td>
+                            </tr>
+                            <tr>
+                                <td>Tiết 12</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tiết 12</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>...</th>
+                                <th>Thứ 2</th>
+                                <th>Thứ 3</th>
+                                <th>Thứ 4</th>
+                                <th>Thứ 5</th>
+                                <th>Thứ 6</th>
+                                <th>Thứ 7</th>
+                                <th>Chủ Nhật</th>
+                                <th>...</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

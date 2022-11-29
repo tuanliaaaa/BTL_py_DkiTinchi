@@ -97,9 +97,7 @@ function GetMonHoc_changed(){
 
 
 
-function GetSubjectBySubjectCodeInput(){
-    alert(document.getElementById('subjecttext').value);
-}
+
 function GetCreditByID(id){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() 
@@ -118,11 +116,12 @@ function GetCreditByID(id){
         var credits= JSON.parse(creditsJsons);
         if(xhttp.status==200)
         {
+          
             subjectselect=id;
             var seleccreditsHtmls = '<thead><tr><th>Trạng Thái</th><th>Mã Môn Học</th><th>Tên Môn Học</th><th>Sĩ số</th><th>Tối Đa</th><th>Thứ</th><th>Tiết Bắt Đầu</th><th>Số Tiết</th><th>Giảng Viên</th><th style="width:300px">Danh Sách Ngày Học</th></tr></thead>';
             for (var i in credits)
             {
-                
+
                 var dayDefault=credits[i]["dayDefault"].split(",");
                 var dem= dayDefault.length;
                 var seachtbd =dayDefault[0].search("T");
@@ -181,14 +180,20 @@ function GetSectionClassStudentNow(){
         var subjects= JSON.parse(subjectsJsons);
         if(xhttp.status==200)
         {
+
             var selecSubjectHtmls = '<thead><tr><th>Lưu Đăng kí</th><th>Mã Môn Học</th><th>Tên Môn Học</th></tr></thead><tbody>';
                  
             for (var i in subjects)
             {
-                listcredit.push(subjects[i]['classSection']);
+
+                if(listcredit.includes(subjects[i]['classSection'])==false)
+                {
+                    listcredit.push(subjects[i]['classSection']);
+                }
                 selecSubjectHtmls+='<tr><td id="checkbox" ><input type="checkbox" onclick="DeleteCredit(this)" checked'+' value="'+subjects[i]['classSection']+'"></td><td id="'+subjects[i]['SubjectCode']+'">'+subjects[i]['SubjectCode']+'</td><td >'+subjects[i]['SubjectName']+'</td></tr>';
             }
             document.getElementById("table__CheckSubjectlist").innerHTML=selecSubjectHtmls+"</tbody>";
+
         }
     }            
     xhttp.open("GET", "/SectionClassStudent/api/SectionClassStudentNow",false);
@@ -227,6 +232,7 @@ function PostCredit(credit){
         var tokenResponse= JSON.parse(tokenResponseJson)
         if(xhttp.status==201)
         {
+            console.log(listcredit)
             GetCredit_changed();
             credit.checked=true;
             GetSectionClassStudentNow();
@@ -284,12 +290,14 @@ function DeleteCredit(credit){
         if(xhttp.status==204)
         {
             listcredit.pop(credit.value);
+
+            
             if(subjectselect!=0)
             {
-
-                GetCreditByID(subjectselect);
+                GetSectionClassStudentNow();
+                
             }
-            GetSectionClassStudentNow()
+
         }
         else if(xhttp.status==404)
         {

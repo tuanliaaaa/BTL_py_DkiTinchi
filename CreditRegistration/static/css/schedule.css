@@ -1,0 +1,168 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.clear::after {  
+    content: "";  clear: both;  display: table;
+
+}
+#header{
+    
+}
+#header .header__top{
+    height: 120px;
+    background-color:  rgb(237, 237, 177);
+}
+.header__top .header__logo{
+    float:left;
+    width: 20%;
+}
+.header__logo img{
+    margin-top: 10px;
+}
+.header__top .header__title{
+    float:right;
+    width: 80%;
+    text-align: center;
+}
+.header__title h1{
+    font-size:20px;
+    
+    margin: 10px 0 20px 0;
+}
+.header__title p{
+    color:red;
+    font-size:20px;
+}
+#header .header__navbar{
+    background-color: #343a40;
+    height: 60px;;
+}
+.header__navbar .header__navbar__listoption{
+    float: left;
+}
+.header__navbar__listoption ul{
+    list-style: none;
+}
+.header__navbar__listoption ul a{
+    text-decoration: none;
+    
+}
+.header__navbar__listoption ul a li{
+    color: white;
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 10px 0 10px;
+    display: inline-block;
+    padding:0 10px 0 10px;
+}
+
+.header__navbar__listoption ul a:first-child  li{
+    margin-left: 50px;
+}
+.header__navbar__listoption ul a li:hover{
+    background-color: #ccc;
+    color: black;
+}
+.header__navbar .header__navbar__logout{
+    float: right;
+    margin-right: 60px;
+    line-height: 60px;
+}
+.header__navbar__logout a{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding:0 10px 0 10px;
+}
+.header__navbar__logout:hover a{
+    background-color: #ccc;
+    color: black;
+}
+#container{
+    
+}
+#container .container__body{
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+}
+.container__body .container__body__title{
+
+}
+.container__body__title .container__body__title__img{
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+.container__body__title__img img{
+    width: 100px;
+    height: 86px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.container__body .container__body__title__sheduleselect{
+    float:right;
+    width: 80%;
+}
+.container__body__title__sheduleselect .title__sheduleselect__selectterm{
+   margin-bottom: 30px;
+    
+}
+.title__sheduleselect__selectterm label{
+    margin-right: 20px;
+}
+.title__sheduleselect__selectterm #selectterm{
+    min-width: 200px;
+}
+.container__body__title__sheduleselect .title__sheduleselect__selectteschoolweek{
+
+}
+.title__sheduleselect__selectteschoolweek label{
+    margin-right: 20px;
+}
+.title__sheduleselect__selectteschoolweek #schoolweek{
+    min-width: 200px;
+}
+.container__body .container__body__content{
+
+}
+.container__body__content .container__body__scheduletable{
+    margin: 40px 0 40px 0;
+}
+.container__body__scheduletable #scheduletable{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+#scheduletable thead tr th{
+    padding: 10px;
+    background-color: rgb(234, 244, 240);
+}
+#scheduletable thead tr th:first-child, #scheduletable thead tr th:last-child{
+    background-color: white;
+}
+
+#scheduletable tbody tr td:first-child,#scheduletable tbody tr td:last-child{
+    background-color: rgb(234, 244, 240);
+}
+#scheduletable tfoot tr th{
+    padding: 10px;
+    background-color: rgb(234, 244, 240);
+}
+#scheduletable tfoot tr th:first-child, #scheduletable tfoot tr th:last-child{
+    background-color: white;
+}
+
+#scheduletable, #scheduletable td, #scheduletable th {
+    border: 1px solid #ccc;
+    
+}
+#scheduletable .subjectlesson{
+    background-color: bisque;
+}

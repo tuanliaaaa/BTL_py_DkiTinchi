@@ -8,3 +8,6 @@ class SubjecttRegistration(View):
 class CreditRegistration(View):    
     def get(self,request):
         return render(request,"creditRegistration.html")
+class Schedule(View):
+    def get(self,request):
+        return render(request,"schedule.html")
